@@ -43,7 +43,7 @@ Such a strategy captures model uncertainty in a Bayesian fashion, improving OoD 
 NADS constructs a layer-wise search space with a predefined macro-architecture, where each layer can have a different architecture component. Each layer in macro-architecture consists of an actnorm, an invertible 1 x 1 convolution, and an affine coupling layer, and each operational block of the affine coupling layer is selected from a list of candidate operations. This part is a little different from [DARTS](https://arxiv.org/abs/1806.09055), NADS reduce the search space with 5 options such that can learn efficiently.
 
 ### Optimization
-We are interested in finding a distribution $$p_\phi(\alpha)$$ parameterized by that minimizes the expected loss of an architecture \alpha sampled from it. For our NADS, this loss function is the negative WAIC score of in distribution data. Several difficulties arise when naively attempting to optimize this setup.
+We are interested in finding a distribution $p_\phi(\alpha)$ parameterized by that minimizes the expected loss of an architecture \alpha sampled from it. For our NADS, this loss function is the negative WAIC score of in distribution data. Several difficulties arise when naively attempting to optimize this setup.
 + Firstly, the objective function involves computing an expectation and variance over all possible discrete architectures. We alleviate this problem by approximating the WAIC objective through Monte Carlo sampling. Specifically, we can sample M architectures and approximate the WAIC score expectation and variance terms as
 
 <p align="center">
